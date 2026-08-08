@@ -1,0 +1,44 @@
+databases:
+  - name: hinthar-sms-db
+    plan: free
+    databaseName: hinthar_sms
+    user: hinthar
+
+services:
+  - type: web
+    name: hinthar-sms-api
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "./start.sh"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: hinthar-sms-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: ".onrender.com"
+      - key: PYTHON_VERSION
+        value: "3.12.2"
+      - key: CLERK_FRONTEND_API
+        sync: false
+      - key: CLERK_JWKS_URL
+        sync: false
+      - key: CLERK_SECRET_KEY
+        sync: false
+      # Required when DEBUG=False — must match session token "aud" claim in Clerk
+      - key: CLERK_JWT_AUDIENCE
+        sync: false
+      # Comma-separated dashboard origin(s), e.g. https://your-app.vercel.app
+      # Required when the dashboard calls Django directly (NEXT_PUBLIC_API_ORIGIN).
+      - key: CORS_ALLOWED_ORIGINS
+        sync: false
+      # Optional Vercel preview allowlist: ^https://.*\.vercel\.app$
+      - key: CORS_ALLOWED_ORIGIN_REGEXES
+        sync: false
+      # Optional: shared cache across workers
+      # - key: REDIS_URL
+      #   sync: false
