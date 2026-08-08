@@ -50,4 +50,4 @@ See `.env.example` for required variables. Pair with the [frontend](https://gith
 
 Shared for portfolio demonstration. Not licensed for production use or redistribution without permission.
 
-Publishable Version Automated by Cursor
+Publishable Version Uploads Automated by Cursor
