@@ -1,6 +1,7 @@
 # Hinthar School Management System — Backend
 
 API backend for **Hinthar**, a school management system that powers the web dashboard.
+This repo is not up to date with the current systems.
 
 Companion frontend: [Hinthar-SchoolManagementSystem-Frontend](https://github.com/shvrku/Hinthar-SchoolManagementSystem-Frontend)
 
